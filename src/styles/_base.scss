@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  background: $primary-bg;
+  color: $text-primary;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+// Scrollbar styling - Much darker
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $primary-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-elevated;
+  border-radius: 4px;
+  
+  &:hover {
+    background: var(--bg-elevated);
+  }
+}
+
+// Selection styling
+::selection {
+  background: rgba(88, 166, 255, 0.3);
+  color: $text-primary;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+  color: $text-primary;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  margin-bottom: $spacing-sm;
+  color: $text-secondary;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+// Utility classes
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @include mobile {
+    padding: 0 $spacing-sm;
+  }
+}
+
+.section {
+  padding: $spacing-xxl 0;
+  background: $primary-bg;
+  
+  @include mobile {
+    padding: $spacing-xl 0;
+  }
+  
+  &--alt {
+    background: $secondary-bg;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gradient {
+  background: $gradient-primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Dark theme specific animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(88, 166, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+  }
+}
+
+// Dark theme glass effect
+.glass-dark {
+  background: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(48, 54, 61, 0.5);
+}

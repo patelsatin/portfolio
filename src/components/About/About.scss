@@ -1,0 +1,643 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.about {
+  background: $primary-bg;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.02) 0%, rgba(255, 107, 107, 0.02) 100%);
+    pointer-events: none;
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xxl;
+    align-items: start;
+    margin-bottom: $spacing-xxl;
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+  
+  &__text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  &__intro {
+    margin-bottom: $spacing-xl;
+    
+    h3 {
+      font-size: $font-size-2xl;
+      margin-bottom: $spacing-lg;
+      color: $text-primary;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: $gradient-primary;
+        border-radius: 2px;
+      }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: $spacing-md;
+      color: $text-secondary;
+    }
+  }
+  
+  &__skills-overview {
+    h4 {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-lg;
+      color: $text-primary;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-lg;
+      
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+      
+      .skill-item {
+        padding: $spacing-lg;
+        background: $card-bg;
+        border-radius: $radius-lg;
+        border: 1px solid $border-color;
+        transition: all $transition-normal;
+        
+        &:hover {
+          transform: translateY(-5px);
+          border-color: rgba(0, 212, 255, 0.3);
+          box-shadow: $shadow-lg;
+        }
+        
+        .skill-icon {
+          width: 60px;
+          height: 60px;
+          @include flex-center;
+          background: rgba(0, 212, 255, 0.1);
+          border-radius: 50%;
+          margin-bottom: $spacing-md;
+          
+          i {
+            font-size: 1.5rem;
+            color: $accent-color;
+          }
+        }
+        
+        h5 {
+          font-size: $font-size-lg;
+          margin-bottom: $spacing-sm;
+          color: $text-primary;
+        }
+        
+        p {
+          font-size: $font-size-sm;
+          color: $text-secondary;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+  
+  &__visual {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease 0.3s;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  &__image {
+    position: relative;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    margin-bottom: $spacing-xl;
+    height: 400px;
+    
+    .about-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-slow;
+    }
+    
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      @include flex-center;
+      opacity: 0;
+      transition: all $transition-normal;
+      cursor: pointer;
+      
+      &:hover {
+        opacity: 1;
+      }
+      
+      .overlay-content {
+        @include flex-center;
+        flex-direction: column;
+        color: $text-primary;
+        
+        i {
+          font-size: 3rem;
+          margin-bottom: $spacing-sm;
+          color: $accent-color;
+        }
+        
+        span {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-medium;
+        }
+      }
+    }
+    
+    &:hover .about-img {
+      transform: scale(1.05);
+    }
+  }
+  
+  &__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+    
+    .stat-item {
+      text-align: center;
+      padding: $spacing-lg;
+      background: $card-bg;
+      border-radius: $radius-lg;
+      border: 1px solid $border-color;
+      transition: all $transition-normal;
+      
+      &:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 212, 255, 0.3);
+      }
+      
+      .stat-number {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        color: $accent-color;
+        margin-bottom: $spacing-xs;
+      }
+      
+      .stat-label {
+        font-size: $font-size-sm;
+        color: $text-secondary;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+  
+  &__experience {
+    margin-bottom: $spacing-xxl;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease 0.6s;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h3 {
+      font-size: $font-size-2xl;
+      text-align: center;
+      margin-bottom: $spacing-xl;
+      color: $text-primary;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: $accent-color;
+        
+        @include mobile {
+          left: 20px;
+        }
+      }
+      
+      .timeline-item {
+        position: relative;
+        padding-left: 80px;
+        margin-bottom: $spacing-xl;
+        
+        @include mobile {
+          padding-left: 60px;
+        }
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: 24px;
+          top: 0;
+          width: 14px;
+          height: 14px;
+          background: $accent-color;
+          border-radius: 50%;
+          border: 3px solid $primary-bg;
+          
+          @include mobile {
+            left: 14px;
+          }
+        }
+        
+        .timeline-date {
+          color: $accent-color;
+          font-weight: $font-weight-medium;
+          font-size: $font-size-sm;
+          margin-bottom: $spacing-xs;
+        }
+        
+        .timeline-content {
+          background: $card-bg;
+          padding: $spacing-lg;
+          border-radius: $radius-lg;
+          border: 1px solid $border-color;
+          transition: all $transition-normal;
+          
+          &:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateX(10px);
+          }
+        }
+        
+        .timeline-title {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+          margin-bottom: $spacing-xs;
+          color: $text-primary;
+        }
+        
+        .timeline-company {
+          color: $accent-color;
+          font-weight: $font-weight-medium;
+          margin-bottom: $spacing-sm;
+        }
+        
+        .timeline-description {
+          color: $text-secondary;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  &__achievements {
+    margin-bottom: $spacing-xxl;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease 0.8s;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h3 {
+      font-size: $font-size-2xl;
+      text-align: center;
+      margin-bottom: $spacing-xl;
+      color: $text-primary;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: $spacing-lg;
+      max-width: 1200px;
+      margin: 0 auto;
+      
+      @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-md;
+      }
+      
+      .achievement-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: $spacing-lg;
+        background: $card-bg;
+        border-radius: $radius-lg;
+        border: 1px solid $border-color;
+        transition: all $transition-normal;
+        height: 200px; // Fixed height for consistency
+        min-width: 0; // Prevents flex items from overflowing
+        
+        &:hover {
+          transform: translateY(-5px);
+          border-color: rgba(255, 215, 0, 0.3);
+          box-shadow: $shadow-lg;
+        }
+        
+        .achievement-icon {
+          width: 50px;
+          height: 50px;
+          @include flex-center;
+          background: rgba(255, 215, 0, 0.1);
+          border-radius: 50%;
+          flex-shrink: 0;
+          margin-bottom: $spacing-sm;
+          
+          i {
+            font-size: 1.2rem;
+            color: #ffd700;
+          }
+        }
+        
+        .achievement-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 100%;
+          
+          .achievement-title {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $text-primary;
+            margin-bottom: $spacing-xs;
+            line-height: 1.3;
+          }
+          
+          .achievement-meta {
+            margin-bottom: $spacing-xs;
+            
+            .achievement-company {
+              color: $accent-color;
+              font-weight: $font-weight-medium;
+              font-size: $font-size-sm;
+              display: block;
+              margin-bottom: 2px;
+            }
+            
+            .achievement-year {
+              color: $text-muted;
+              font-size: $font-size-xs;
+            }
+          }
+          
+          .achievement-description {
+            color: $text-secondary;
+            line-height: 1.4;
+            margin: 0;
+            font-size: $font-size-sm;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+  }
+  
+  &__education {
+    margin-bottom: $spacing-xxl;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease 1s;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h3 {
+      font-size: $font-size-2xl;
+      text-align: center;
+      margin-bottom: $spacing-xl;
+      color: $text-primary;
+    }
+    
+    .education-item {
+      display: flex;
+      gap: $spacing-lg;
+      padding: $spacing-lg;
+      background: $card-bg;
+      border-radius: $radius-lg;
+      border: 1px solid $border-color;
+      max-width: 600px;
+      margin: 0 auto;
+      transition: all $transition-normal;
+      
+      &:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow: $shadow-lg;
+      }
+      
+      .education-icon {
+        width: 60px;
+        height: 60px;
+        @include flex-center;
+        background: rgba(0, 212, 255, 0.1);
+        border-radius: 50%;
+        flex-shrink: 0;
+        
+        i {
+          font-size: 1.5rem;
+          color: $accent-color;
+        }
+      }
+      
+      .education-content {
+        flex: 1;
+        
+        h4 {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+          color: $text-primary;
+          margin-bottom: $spacing-xs;
+        }
+        
+        .education-institution {
+          color: $accent-color;
+          font-weight: $font-weight-medium;
+          margin-bottom: $spacing-xs;
+        }
+        
+        .education-period {
+          color: $text-muted;
+          font-size: $font-size-sm;
+        }
+      }
+    }
+  }
+  
+  &__cta {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease 1.2s;
+    
+    .animate & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .cta-content {
+      background: $card-bg;
+      padding: $spacing-xxl;
+      border-radius: $radius-xl;
+      border: 1px solid $border-color;
+      max-width: 700px;
+      margin: 0 auto;
+      
+      h3 {
+        font-size: $font-size-2xl;
+        margin-bottom: $spacing-md;
+        color: $text-primary;
+      }
+      
+      p {
+        font-size: $font-size-lg;
+        color: $text-secondary;
+        margin-bottom: $spacing-xl;
+      }
+      
+      .cta-actions {
+        @include flex-center;
+        gap: $spacing-lg;
+        margin-bottom: $spacing-xl;
+        
+        @include mobile {
+          flex-direction: column;
+          width: 100%;
+        }
+        
+        .btn {
+          padding: $spacing-md $spacing-xl;
+          font-size: $font-size-lg;
+          border-radius: $radius-md;
+          font-weight: $font-weight-semibold;
+          text-decoration: none;
+          transition: all $transition-normal;
+          
+          @include mobile {
+            width: 100%;
+          }
+          
+          &--primary {
+            @include btn-primary;
+          }
+          
+          &--outline {
+            @include btn-outline;
+          }
+        }
+      }
+      
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-xl;
+        flex-wrap: wrap;
+        
+        .contact-item {
+          @include flex-center;
+          gap: $spacing-sm;
+          color: $text-secondary;
+          font-size: $font-size-sm;
+          
+          i {
+            color: $accent-color;
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@include mobile {
+  .about {
+    &__content {
+      gap: $spacing-lg;
+    }
+    
+    &__skills-overview .skills-grid {
+      gap: $spacing-md;
+      
+      .skill-item {
+        padding: $spacing-md;
+      }
+    }
+    
+    &__stats {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+    
+    &__achievements .achievements-grid .achievement-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    &__education .education-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    &__cta .cta-content {
+      padding: $spacing-xl;
+      
+      .contact-info {
+        flex-direction: column;
+        gap: $spacing-md;
+      }
+    }
+  }
+}

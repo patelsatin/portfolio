@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+
+.theme-toggle {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  
+  .toggle-track {
+    width: 60px;
+    height: 30px;
+    background: $border-color;
+    border-radius: 15px;
+    position: relative;
+    transition: all $transition-normal;
+    
+    .toggle-thumb {
+      width: 26px;
+      height: 26px;
+      background: $card-bg;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all $transition-normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: $shadow-md;
+      left: 2px;
+      
+      i {
+        font-size: 0.75rem;
+        color: $accent-color;
+        transition: all $transition-normal;
+      }
+    }
+  }
+  
+  &.dark {
+    .toggle-track {
+      border-color: $accent-color;
+      
+      .toggle-thumb {
+        left: calc(100% - 28px);
+        
+        i {
+          color: $primary-bg;
+        }
+      }
+    }
+  }
+  
+  &:hover {
+    .toggle-track {
+      transform: scale(1.05);
+    }
+  }
+  
+  &:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+    border-radius: 15px;
+  }
+}

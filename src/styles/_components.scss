@@ -1,0 +1,348 @@
+// ==============================
+// Portfolio Button Components
+// ==============================
+.btn {
+  @include button-base;
+  
+  &--primary {
+    @include button-primary;
+  }
+  
+  &--secondary {
+    @include button-secondary;
+  }
+  
+  &--success {
+    @include button-base;
+    background: linear-gradient(135deg, $accent-secondary 0%, $accent-secondary 100%);
+    color: white;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    }
+  }
+  
+  &--danger {
+    @include button-base;
+    background: linear-gradient(135deg, $accent-danger 0%, $accent-danger 100%);
+    color: white;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
+    }
+  }
+  
+  &--small {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+  }
+  
+  &--large {
+    padding: $spacing-lg $spacing-2xl;
+    font-size: $font-size-lg;
+  }
+  
+  &--icon {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    
+    i {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// ==============================
+// Portfolio Card Components
+// ==============================
+.card {
+  @include card-base;
+  padding: $spacing-xl;
+  
+  &--hover {
+    @include card-hover;
+  }
+  
+  &--elevated {
+    @include card-elevated;
+  }
+  
+  &--glass {
+    @include glass-effect;
+  }
+  
+  &--project {
+    overflow: hidden;
+    
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: $bg-elevated;
+      border-radius: $radius-md;
+      margin-bottom: $spacing-lg;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-slow;
+      }
+    }
+    
+    &:hover .project-image img {
+      transform: scale(1.05);
+    }
+  }
+  
+  &--skill {
+    text-align: center;
+    padding: $spacing-lg;
+    
+    .skill-icon {
+      font-size: 3rem;
+      color: $accent-color;
+      margin-bottom: $spacing-md;
+    }
+    
+    .skill-name {
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .skill-level {
+      width: 100%;
+      height: 6px;
+      background: $bg-elevated;
+      border-radius: 3px;
+      overflow: hidden;
+      
+      .skill-progress {
+        height: 100%;
+        background: $gradient-primary;
+        border-radius: 3px;
+        transition: width 1s ease;
+      }
+    }
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-primary;
+  }
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin: 0;
+  }
+  
+  &__content {
+    color: $text-secondary;
+    line-height: 1.6;
+  }
+  
+  &__footer {
+    margin-top: $spacing-lg;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $border-primary;
+    @include flex-between;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+    
+    .tag {
+      padding: $spacing-xs $spacing-sm;
+      background: rgba(0, 212, 255, 0.1);
+      color: $accent-color;
+      border-radius: $radius-sm;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+// ==============================
+// Portfolio Section Components
+// ==============================
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-xxl;
+  
+  .section-title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-md;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .section-subtitle {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// ==============================
+// Form Components
+// ==============================
+.form-group {
+  margin-bottom: $spacing-xl;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+.form-input {
+  @include input-base;
+}
+
+.form-textarea {
+  @include input-base;
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.form-select {
+  @include input-base;
+  cursor: pointer;
+  
+  option {
+    background-color: $secondary-bg;
+    color: $text-primary;
+  }
+}
+
+// ==============================
+// Loading Components
+// ==============================
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid $border-primary;
+  border-top: 2px solid $accent-color;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-skeleton {
+  @include loading-shimmer;
+  border-radius: $border-radius-md;
+  
+  &--text {
+    height: 1em;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &--title {
+    height: 1.5em;
+    width: 60%;
+    margin-bottom: $spacing-lg;
+  }
+  
+  &--avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+// ==============================
+// Navigation Components
+// ==============================
+.nav-pills {
+  display: flex;
+  gap: $spacing-sm;
+  
+  .nav-pill {
+    padding: $spacing-sm $spacing-lg;
+    background: transparent;
+    color: $text-secondary;
+    border: 2px solid transparent;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: all $transition-fast;
+    
+    &:hover,
+    &.active {
+      color: $accent-color;
+      background: rgba(0, 212, 255, 0.1);
+      border-color: $accent-color;
+    }
+  }
+}
+
+// ==============================
+// Timeline Components
+// ==============================
+.timeline {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $accent-color;
+  }
+  
+  &-item {
+    position: relative;
+    padding-left: $spacing-xxl;
+    margin-bottom: $spacing-xl;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      background: $accent-color;
+      border-radius: 50%;
+      border: 3px solid $primary-bg;
+    }
+    
+    .timeline-date {
+      color: $accent-color;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-xs;
+    }
+    
+    .timeline-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .timeline-content {
+      color: $text-secondary;
+      line-height: 1.6;
+    }
+  }
+}
