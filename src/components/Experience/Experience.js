@@ -28,7 +28,7 @@ const Experience = () => {
     {
       id: 1,
       company: 'Amdocs',
-      logo: '/logos/amdocs.png',
+      logo: './logos/amdocs.png',
       position: 'Software Engineer',
       duration: 'Sep 2024 - Present',
       location: 'Pune, Maharashtra, India',
@@ -57,7 +57,7 @@ const Experience = () => {
     {
       id: 2,
       company: 'Nagarro',
-      logo: '/logos/nagarro.png',
+      logo: './logos/nagarro.png',
       position: 'Staff Engineer',
       duration: 'Feb 2023 - Aug 2024',
       location: 'Gurgaon, Haryana, India',
@@ -87,7 +87,7 @@ const Experience = () => {
     {
       id: 3,
       company: 'ATCS',
-      logo: '/logos/ATCS.png',
+      logo: './logos/ATCS.png',
       position: 'Associate Software Engineer',
       duration: 'Jun 2022 - Feb 2023',
       location: 'Jaipur, Rajasthan, India',
@@ -117,7 +117,7 @@ const Experience = () => {
     {
       id: 4,
       company: 'Tata Consultancy Services',
-      logo: '/logos/tcs.png',
+      logo: './logos/tcs.png',
       position: 'Assistant Systems Engineer - Trainee',
       duration: 'Nov 2020 - Jan 2022',
       location: 'Pune, Maharashtra, India',

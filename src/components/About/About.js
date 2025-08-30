@@ -152,11 +152,11 @@ const About = () => {
 
           <div className="about__visual">
             <div className="about__image">
-              <img 
-                src="/aboutme.jpeg" 
-                alt="Satin Patel - Java Full Stack Developer"
-                className="about-img"
-              />
+                             <img 
+                 src="./aboutme.jpeg" 
+                 alt="Satin Patel - Java Full Stack Developer"
+                 className="about-img"
+               />
               <div className="image-overlay">
                 <div className="overlay-content">
                   <i className="fas fa-code"></i>

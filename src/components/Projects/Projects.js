@@ -41,7 +41,7 @@ const Projects = () => {
         'Working with PostgreSQL and Couchbase databases',
         'Utilizing Docker + kubectl for local development testing'
       ],
-      image: '/logos/amdocs.png',
+      image: './logos/amdocs.png',
       status: 'In Progress'
     },
     {
@@ -59,7 +59,7 @@ const Projects = () => {
         'Optimized database schemas and implemented business logic',
         'Enhanced development productivity with modern tools'
       ],
-      image: '/logos/nagarro.png',
+      image: './logos/nagarro.png',
       status: 'Completed'
     },
     {
@@ -77,7 +77,7 @@ const Projects = () => {
         'Utilized Axios for seamless API integration',
         'Implemented robust access control for data security'
       ],
-      image: '/logos/nagarro.png',
+      image: './logos/nagarro.png',
       status: 'Completed'
     },
     {
@@ -95,7 +95,7 @@ const Projects = () => {
         'Developed APIs for dynamic document generation',
         'Integrated multi-department approval processes'
       ],
-      image: '/logos/nagarro.png',
+      image: './logos/nagarro.png',
       status: 'Completed'
     },
     {
@@ -113,7 +113,7 @@ const Projects = () => {
         'Built interactive and user-friendly dashboard components',
         'Implemented comprehensive data visualization features'
       ],
-      image: '/logos/tcs.png',
+      image: './logos/tcs.png',
       status: 'Completed'
     }
   ];

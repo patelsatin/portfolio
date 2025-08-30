@@ -84,7 +84,7 @@ const Hero = () => {
 
             <div className="hero__actions">
               <a href="#experience" className="btn btn-primary">View My Work</a>
-              <a href="/resume.pdf" download className="btn btn-outline">Download CV</a>
+                             <a href="./resume.pdf" download className="btn btn-outline">Download CV</a>
             </div>
 
             <div className="hero__social">
@@ -130,7 +130,7 @@ const Hero = () => {
           <div className="hero__image">
             <div className="image-container">
               <div className="image-placeholder">
-                <img src="/pp.jpg" alt="Profile" className="profile-image" />
+                <img src="./pp.jpg" alt="Profile" className="profile-image" />
               </div>
             </div>
           </div>
