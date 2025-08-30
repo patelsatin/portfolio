@@ -83,8 +83,8 @@ const Hero = () => {
             </div>
 
             <div className="hero__actions">
-              <button className="btn btn-primary">View My Work</button>
-              <button className="btn btn-outline">Download CV</button>
+              <a href="#experience" className="btn btn-primary">View My Work</a>
+              <a href="/resume.pdf" download className="btn btn-outline">Download CV</a>
             </div>
 
             <div className="hero__social">
