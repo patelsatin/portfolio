@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://patelsatin.github.io/portfolio",
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-free": "^7.0.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

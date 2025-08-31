@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import './Contact.scss';
 
 const Contact = () => {
@@ -43,12 +44,32 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const serviceId = 'service_xpvd55h'; 
+      const templateId = 'template_4di2yup';
+      const publicKey = '52JGeZlcidBkECvWK';
+
+      // Prepare template parameters
+      const templateParams = {
+        to_email: 'satin15patel1996@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.email
+      };
+
+      // Send email using EmailJS
+      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
+      console.error('Email sending failed:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
