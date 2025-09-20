@@ -90,6 +90,104 @@
   }
 }
 
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  
+  .auth-controls {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    .auth-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: $spacing-xs;
+      padding: $spacing-xs $spacing-sm;
+      font-size: 0.9rem;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+      
+      i {
+        font-size: 1rem;
+      }
+      
+      span {
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+    
+    .auth-user {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      
+      .avatar-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: all $transition-fast;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+        
+        .avatar-img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid transparent;
+          transition: all $transition-fast;
+        }
+        
+        &:hover .avatar-img {
+          border-color: $accent-color;
+        }
+      }
+    }
+  }
+  
+  .share-portfolio-btn {
+    background: none;
+    border: none;
+    color: $text-primary;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+    margin-right: $spacing-sm;
+    
+    &:hover {
+      color: $accent-color;
+      background: rgba(0, 212, 255, 0.1);
+    }
+  }
+  
+  .dashboard-toggle-btn {
+    background: none;
+    border: none;
+    color: $text-primary;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: $spacing-xs;
+    border-radius: $radius-sm;
+    transition: all $transition-fast;
+    
+    &:hover {
+      color: $accent-color;
+      background: rgba(0, 212, 255, 0.1);
+    }
+  }
+}
+
 .mobile-menu-btn {
   display: none;
   flex-direction: column;

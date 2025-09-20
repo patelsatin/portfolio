@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Firebase Storage Upload</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
+</head>
+<body>
+    <h1>Test Firebase Storage Upload</h1>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()">Upload File</button>
+    <div id="result"></div>
+
+    <script>
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyD1xJX1e9WPE4_Nsl3zYOfDD5FcCdyRXAs",
+            authDomain: "portfolio-2b6ce.firebaseapp.com",
+            projectId: "portfolio-2b6ce",
+            storageBucket: "yportfolio-2b6ce.firebasestorage.app",
+            messagingSenderId: "998369145762",
+            appId: "1:998369145762:web:d000e8efebe4f4a75f78fb"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const storage = firebase.storage();
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert('Please select a file');
+                return;
+            }
+
+            try {
+                const storageRef = storage.ref();
+                const fileRef = storageRef.child(`test/${file.name}`);
+                
+                const snapshot = await fileRef.put(file);
+                const downloadURL = await snapshot.ref.getDownloadURL();
+                
+                document.getElementById('result').innerHTML = `
+                    <p>Upload successful!</p>
+                    <p>Download URL: <a href="${downloadURL}" target="_blank">${downloadURL}</a></p>
+                `;
+            } catch (error) {
+                console.error('Upload error:', error);
+                document.getElementById('result').innerHTML = `
+                    <p>Upload failed: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

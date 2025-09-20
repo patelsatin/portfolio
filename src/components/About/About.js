@@ -1,10 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import './About.scss';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
+import PortfolioDataMissing from '../PortfolioDataMissing/PortfolioDataMissing';
 
-const About = () => {
+const About = ({ onEditClick, portfolioData, isPublic = false, userId }) => {
   const aboutRef = useRef(null);
+  const { data: hookData, loading, error, hasUserData } = usePortfolioData('about');
+  const aboutData = isPublic ? portfolioData : hookData;
+  
+  // Debug logs removed in production
 
   useEffect(() => {
+    if (loading || !aboutData) return;
+
+    const node = aboutRef.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -16,147 +27,112 @@ const About = () => {
       { threshold: 0.1 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
-    }
+    observer.observe(node);
+    // Ensure visible even if already in view
+    node.classList.add('animate');
 
     return () => observer.disconnect();
-  }, []);
+  }, [loading, aboutData]);
 
-  const stats = [
-    { number: '4.3+', label: 'Years Experience' },
-    { number: '15+', label: 'Projects Completed' },
-    { number: '50+', label: 'APIs Developed' },
-    { number: '3', label: 'Awards Won' }
-  ];
+  if (!isPublic && loading) {
+    return (
+      <section id="about" className="about section">
+        <div className="container">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading about section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const experiences = [
-    {
-      year: 'Sep 2024 - Present',
-      title: 'Software Engineer',
-      company: 'Amdocs, Pune',
-      description: 'Working on Optima telecom management software, developing microservices using JBoss Fuse, Apache Camel, and Spring Boot with React and Redux for frontend.'
-    },
-    {
-      year: 'Jan 2022 - Aug 2024',
-      title: 'Software Engineer',
-      company: 'Nagarro, Jaipur',
-      description: 'Led frontend teams, developed full-stack applications using Spring Boot and ReactJS/Angular, implemented Redis caching, and optimized API performance to execute under 1 second.'
-    },
-    {
-      year: 'Nov 2020 - Jan 2022',
-      title: 'Assistant System Engineer',
-      company: 'TCS, Hyderabad',
-      description: 'Developed data retrieval pipelines, worked with Sparkola and Collibra, built internal dashboards using ReactJS, and gained expertise in MySQL and data visualization.'
-    }
-  ];
+  if (!isPublic && error) {
+    return (
+      <section id="about" className="about section">
+        <div className="container">
+          <div className="error-container">
+            <p>Error loading about section: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const achievements = [
-    {
-      title: 'The Brightest Mind Award',
-      company: 'Nagarro',
-      year: '2023-2024',
-    },
-    {
-      title: 'Best of the Best Award',
-      company: 'Nagarro',
-      year: 'Q3 & Q4 2022',
-    },
-    {
-      title: 'On the Spot Gems Award',
-      company: 'TCS',
-      year: '2021',
-    }
-    ,{
-      title: 'Go Above And Beyond',
-      company: 'Amdocs',
-      year: '2025'
-    },{
-      title: 'Knowledge Champion',
-      company: 'Amdocs',
-      year: '2025'
-    },{
-      title: 'Impact Master',
-      company: 'Amdocs',
-      year: '2025'
-    }
-  ];
+  if (!isPublic && !aboutData) {
+    console.log('About: aboutData is falsy, showing PortfolioDataMissing');
+    return (
+      <section id="about" className="about section">
+        <div className="container">
+          <PortfolioDataMissing 
+            sectionName="About" 
+            onEditClick={onEditClick}
+          />
+        </div>
+      </section>
+    );
+  }
+  
+  console.log('About: aboutData exists, proceeding to render with data:', aboutData);
+
+  const { sectionInfo, personalInfo, skillsOverview, stats, achievements, education } = aboutData;
+  
+  // Hardcoded values (do not come from JSON/response)
+  const HARD_TITLE = 'About Me';
+  // Use a playful cartoon avatar instead of a real image
+  const HARD_IMAGE = { 
+    src: './about.jpeg', 
+    alt: 'Professional developer illustration' 
+  };
 
   return (
     <section id="about" className="about section" ref={aboutRef}>
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">{HARD_TITLE}</h2>
           <p className="section-subtitle">
-            Dynamic Full-stack Java developer with 4.3 years of hands-on experience
+            {sectionInfo.subtitle}
           </p>
+          {hasUserData && (
+            <div className="data-source-indicator">
+              <i className="fas fa-database"></i>
+              <span>Your Custom Data</span>
+            </div>
+          )}
         </div>
 
         <div className="about__content">
           <div className="about__text">
             <div className="about__intro">
-              <h3>Hello! I'm Satin Patel</h3>
-              <p>
-                I'm a dynamic Full-stack Java developer with 4.3 years of hands-on experience, 
-                adept at driving successful project outcomes through effective leadership and team collaboration. 
-                I specialize in building enterprise-grade applications using modern technologies like Spring Boot, 
-                ReactJS, and microservices architecture.
-              </p>
-              <p>
-                My expertise lies in project management, consistently delivering high-quality solutions 
-                by aligning client requirements with innovative technical solutions. I have a proven track 
-                record of optimizing API performance, implementing secure coding practices, and leading 
-                frontend development teams.
-              </p>
-              <p>
-                I'm committed to excellence in service delivery, engaging closely with clients to understand 
-                their needs and deliver exceptional results. When I'm not coding, I'm exploring new 
-                technologies and contributing to open-source projects.
-              </p>
+              <h3>{personalInfo.greeting}</h3>
+              {personalInfo.description.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="about__skills-overview">
-              <h4>What I Do</h4>
+              <h4>{skillsOverview.title}</h4>
               <div className="skills-grid">
-                <div className="skill-item">
-                  <div className="skill-icon">
-                    <i className="fab fa-java"></i>
+                {skillsOverview.skills.map((skill, index) => (
+                  <div key={index} className="skill-item">
+                    <div className="skill-icon">
+                      <i className={skill.icon}></i>
+                    </div>
+                    <h5>{skill.title}</h5>
+                    <p>{skill.description}</p>
                   </div>
-                  <h5>Backend Development</h5>
-                  <p>Building robust microservices using Spring Boot, JBoss Fuse, Apache Camel, and implementing Drools rule engine for business logic.</p>
-                </div>
-                <div className="skill-item">
-                  <div className="skill-icon">
-                    <i className="fab fa-react"></i>
-                  </div>
-                  <h5>Frontend Development</h5>
-                  <p>Creating responsive interfaces using ReactJS, Angular, Redux, PrimeNG, and PrimeReact with focus on user experience.</p>
-                </div>
-                <div className="skill-item">
-                  <div className="skill-icon">
-                    <i className="fas fa-database"></i>
-                  </div>
-                  <h5>Database Management</h5>
-                  <p>Working with PostgreSQL, MySQL, Couchbase (NoSQL), and implementing Redis caching for performance optimization.</p>
-                </div>
-                <div className="skill-item">
-                  <div className="skill-icon">
-                    <i className="fas fa-cloud"></i>
-                  </div>
-                  <h5>DevOps & Cloud</h5>
-                  <p>Utilizing Docker, Kubernetes, CI/CD pipelines, and ensuring code quality with SonarQube, Black Duck, and Checkmarx.</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
           <div className="about__visual">
             <div className="about__image">
-                             <img 
-                 src="./aboutme.jpeg" 
-                 alt="Satin Patel - Java Full Stack Developer"
-                 className="about-img"
-               />
+              <img 
+                src={HARD_IMAGE.src} 
+                alt={HARD_IMAGE.alt}
+                className="about-img"
+              />
               <div className="image-overlay">
                 <div className="overlay-content">
                   <i className="fas fa-code"></i>
@@ -190,7 +166,6 @@ const About = () => {
                     <span className="achievement-company">{achievement.company}</span>
                     <span className="achievement-year">{achievement.year}</span>
                   </div>
-                  <p className="achievement-description">{achievement.description}</p>
                 </div>
               </div>
             ))}
@@ -198,15 +173,15 @@ const About = () => {
         </div>
 
         <div className="about__education">
-          <h3>Education</h3>
+          <h3>{education.title}</h3>
           <div className="education-item">
             <div className="education-icon">
               <i className="fas fa-graduation-cap"></i>
             </div>
             <div className="education-content">
-              <h4>Bachelor of Engineering in Information Technology</h4>
-              <div className="education-institution">Samrat Ashok Technological Institute, Vidisha</div>
-              <div className="education-period">Aug 2016 - June 2020</div>
+              <h4>{education.degree}</h4>
+              <div className="education-institution">{education.institution}</div>
+              <div className="education-period">{education.period}</div>
             </div>
           </div>
         </div>

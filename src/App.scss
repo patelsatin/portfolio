@@ -10,4 +10,121 @@
   color: $text-primary;
   min-height: 100vh;
   transition: background-color $transition-normal, color $transition-normal;
+  position: relative;
+}
+
+// Dashboard Toggle Button
+.dashboard-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 123, 255, 0.4);
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  i {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover i {
+    transform: rotate(180deg);
+  }
+}
+
+// Logout Button
+.logout-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+
+  i {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover i {
+    transform: scale(1.1);
+  }
+}
+
+// Dark theme support for dashboard toggle
+[data-theme="dark"] {
+  .dashboard-toggle {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+
+    &:hover {
+      box-shadow: 0 6px 25px rgba(74, 144, 226, 0.4);
+    }
+  }
+
+  .logout-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+
+    &:hover {
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .dashboard-toggle {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .logout-button {
+    bottom: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 14px;
+  }
 }

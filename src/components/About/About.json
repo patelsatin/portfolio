@@ -1,0 +1,87 @@
+{
+  "sectionInfo": {
+    "title": "About Me",
+    "subtitle": "Dynamic Full-stack Java developer with 4.3 years of hands-on experience"
+  },
+  "personalInfo": {
+    "greeting": "Hello! I'm Satin Patel",
+    "description": [
+      "I'm a dynamic Full-stack Java developer with 4.3 years of hands-on experience, adept at driving successful project outcomes through effective leadership and team collaboration. I specialize in building enterprise-grade applications using modern technologies like Spring Boot, ReactJS, and microservices architecture.",
+      "My expertise lies in project management, consistently delivering high-quality solutions by aligning client requirements with innovative technical solutions. I have a proven track record of optimizing API performance, implementing secure coding practices, and leading frontend development teams.",
+      "I'm committed to excellence in service delivery, engaging closely with clients to understand their needs and deliver exceptional results. When I'm not coding, I'm exploring new technologies and contributing to open-source projects."
+    ]
+  },
+  "skillsOverview": {
+    "title": "What I Do",
+    "skills": [
+      {
+        "icon": "fab fa-java",
+        "title": "Backend Development",
+        "description": "Building robust microservices using Spring Boot, JBoss Fuse, Apache Camel, and implementing Drools rule engine for business logic."
+      },
+      {
+        "icon": "fab fa-react",
+        "title": "Frontend Development",
+        "description": "Creating responsive interfaces using ReactJS, Angular, Redux, PrimeNG, and PrimeReact with focus on user experience."
+      },
+      {
+        "icon": "fas fa-database",
+        "title": "Database Management",
+        "description": "Working with PostgreSQL, MySQL, Couchbase (NoSQL), and implementing Redis caching for performance optimization."
+      },
+      {
+        "icon": "fas fa-cloud",
+        "title": "DevOps & Cloud",
+        "description": "Utilizing Docker, Kubernetes, CI/CD pipelines, and ensuring code quality with SonarQube, Black Duck, and Checkmarx."
+      }
+    ]
+  },
+  "stats": [
+    { "number": "4.3+", "label": "Years Experience" },
+    { "number": "15+", "label": "Projects Completed" },
+    { "number": "50+", "label": "APIs Developed" },
+    { "number": "3", "label": "Awards Won" }
+  ],
+  "achievements": [
+    {
+      "title": "The Brightest Mind Award",
+      "company": "Nagarro",
+      "year": "2023-2024"
+    },
+    {
+      "title": "Best of the Best Award",
+      "company": "Nagarro",
+      "year": "Q3 & Q4 2022"
+    },
+    {
+      "title": "On the Spot Gems Award",
+      "company": "TCS",
+      "year": "2021"
+    },
+    {
+      "title": "Go Above And Beyond",
+      "company": "Amdocs",
+      "year": "2025"
+    },
+    {
+      "title": "Knowledge Champion",
+      "company": "Amdocs",
+      "year": "2025"
+    },
+    {
+      "title": "Impact Master",
+      "company": "Amdocs",
+      "year": "2025"
+    }
+  ],
+  "education": {
+    "title": "Education",
+    "degree": "Bachelor of Engineering in Information Technology",
+    "institution": "Samrat Ashok Technological Institute, Vidisha",
+    "period": "Aug 2016 - June 2020"
+  },
+  "image": {
+    "src": "./aboutme.jpeg",
+    "alt": "Satin Patel - Java Full Stack Developer"
+  }
+}

@@ -1,12 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Projects.scss';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
+import PortfolioDataMissing from '../PortfolioDataMissing/PortfolioDataMissing';
 
-const Projects = () => {
+const Projects = ({ onEditClick, portfolioData, isPublic = false, userId }) => {
   const projectsRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState([]);
+  const { data: hookData, loading, error } = usePortfolioData('projects');
+  const projectsData = isPublic ? portfolioData : hookData;
 
   useEffect(() => {
+    if (loading || !projectsData) return;
+
+    const node = projectsRef.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -18,137 +27,85 @@ const Projects = () => {
       { threshold: 0.1 }
     );
 
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
-    }
+    observer.observe(node);
+    // Ensure visible if already in view
+    node.classList.add('animate');
 
     return () => observer.disconnect();
-  }, []);
-
-  const projects = [
-    {
-      id: 1,
-      title: 'Telecom Management Software',
-      category: 'enterprise',
-      company: 'Amdocs',
-      duration: 'Sep 2024 - Present',
-      description: 'Working on Optima telecom management software, developing microservices and frontend components for telecom industry solutions.',
-      technologies: ['ReactJS', 'Redux', 'Apache Camel', 'JBoss Fuse', 'Java 8', 'Spring Boot', 'PostgreSQL', 'Couchbase', 'Drools'],
-      features: [
-        'Developing backend services using Spring Boot, JBoss Fuse, and Apache Camel',
-        'Working with ReactJS and Redux for frontend development',
-        'Integrating Drools rule engine for business logic',
-        'Working with PostgreSQL and Couchbase databases',
-        'Utilizing Docker + kubectl for local development testing'
-      ],
-      image: './logos/amdocs.png',
-      status: 'In Progress'
-    },
-    {
-      id: 2,
-      title: 'Enterprise Management System',
-      category: 'enterprise',
-      company: 'Nagarro',
-      duration: 'Jan 2023 - Aug 2024',
-      description: 'Led frontend team development for comprehensive enterprise management system with document handling and reporting capabilities.',
-      technologies: ['Angular', 'Spring Boot', 'Java 17', 'PrimeNG', 'Redis', 'GitHub Copilot', 'PostgreSQL'],
-      features: [
-        'Managed and guided frontend development team',
-        'Led design and implementation of responsive user interfaces',
-        'Developed RESTful APIs with comprehensive documentation',
-        'Optimized database schemas and implemented business logic',
-        'Enhanced development productivity with modern tools'
-      ],
-      image: './logos/nagarro.png',
-      status: 'Completed'
-    },
-    {
-      id: 3,
-      title: 'Supplier Management Platform',
-      category: 'web-app',
-      company: 'Nagarro',
-      duration: 'Jun 2022 - Dec 2022',
-      description: 'User-friendly supplier registration platform enabling organizational users to review and approve supplier details for compliance.',
-      technologies: ['ReactJS', 'Spring Boot', 'PostgreSQL', 'Redis', 'PrimeReact', 'Axios', 'Redux'],
-      features: [
-        'Solely handled frontend development responsibilities',
-        'Designed responsive UI with React and PrimeReact',
-        'Created user-friendly forms with Redux state management',
-        'Utilized Axios for seamless API integration',
-        'Implemented robust access control for data security'
-      ],
-      image: './logos/nagarro.png',
-      status: 'Completed'
-    },
-    {
-      id: 4,
-      title: 'Automated Reporting System',
-      category: 'web-app',
-      company: 'Nagarro',
-      duration: 'Mar 2022 - May 2022',
-      description: 'Automated system for team data management, calculations, and collaborative reviews with dynamic report generation capabilities.',
-      technologies: ['Angular 7/14', 'Spring Boot', 'PostgreSQL', 'Thymeleaf', 'Redis'],
-      features: [
-        'Migrated existing Angular 7 module to Angular 14',
-        'Implemented server-to-server communication for REST APIs',
-        'Designed dynamic screens for versatile data management',
-        'Developed APIs for dynamic document generation',
-        'Integrated multi-department approval processes'
-      ],
-      image: './logos/nagarro.png',
-      status: 'Completed'
-    },
-    {
-      id: 5,
-      title: 'Internal Analytics Dashboard',
-      category: 'dashboard',
-      company: 'TCS',
-      duration: 'Nov 2020 - Jan 2022',
-      description: 'Internal dashboard providing valuable insights and data visualization with comprehensive data retrieval and transformation pipelines.',
-      technologies: ['ReactJS', 'MySQL', 'Sparkola', 'Collibra', 'JavaScript'],
-      features: [
-        'Developed data retrieval pipelines from database systems',
-        'Worked with data transformation and processing tools',
-        'Created datasets for data governance and management',
-        'Built interactive and user-friendly dashboard components',
-        'Implemented comprehensive data visualization features'
-      ],
-      image: './logos/tcs.png',
-      status: 'Completed'
-    }
-  ];
-
-  const categories = [
-    { id: 'all', name: 'All Projects', count: projects.length },
-    { id: 'enterprise', name: 'Enterprise', count: projects.filter(p => p.category === 'enterprise').length },
-    { id: 'web-app', name: 'Web Applications', count: projects.filter(p => p.category === 'web-app').length },
-    { id: 'dashboard', name: 'Dashboards', count: projects.filter(p => p.category === 'dashboard').length }
-  ];
+  }, [loading, projectsData]);
 
   useEffect(() => {
+    if (!projectsData?.projects) return;
+    
     if (activeFilter === 'all') {
-      setFilteredProjects(projects);
+      setFilteredProjects(projectsData.projects);
     } else {
-      setFilteredProjects(projects.filter(project => project.category === activeFilter));
+      setFilteredProjects(projectsData.projects.filter(project => project.category === activeFilter));
     }
-  }, [activeFilter]);
+  }, [activeFilter, projectsData]);
 
   const handleFilterChange = (filter) => {
     setActiveFilter(filter);
   };
 
+  if (loading) {
+    return (
+      <section id="projects" className="projects section">
+        <div className="container">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading projects section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="projects" className="projects section">
+        <div className="container">
+          <div className="error-container">
+            <p>Error loading projects section: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!projectsData) {
+    return (
+      <section id="projects" className="projects section">
+        <div className="container">
+          <PortfolioDataMissing 
+            sectionName="Projects" 
+            onEditClick={onEditClick}
+          />
+        </div>
+      </section>
+    );
+  }
+
+  const { sectionInfo, projects, categories, stats, note } = projectsData;
+
+  // Calculate category counts dynamically
+  const categoriesWithCounts = categories.map(category => ({
+    ...category,
+    count: category.id === 'all' ? projects.length : projects.filter(p => p.category === category.id).length
+  }));
+
   return (
     <section id="projects" className="projects section" ref={projectsRef}>
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Projects</h2>
+          <h2 className="section-title">{sectionInfo.title}</h2>
           <p className="section-subtitle">
-            Showcasing my expertise in full-stack development and enterprise solutions
+            {sectionInfo.subtitle}
           </p>
         </div>
 
         <div className="projects__filters">
-          {categories.map((category) => (
+          {categoriesWithCounts.map((category) => (
             <button
               key={category.id}
               className={`filter-btn ${activeFilter === category.id ? 'active' : ''}`}
@@ -232,42 +189,17 @@ const Projects = () => {
         </div>
 
         <div className="projects__stats">
-          <div className="stat-item">
-            <div className="stat-icon">
-              <i className="fas fa-project-diagram"></i>
+          {stats.map((stat, index) => (
+            <div key={index} className="stat-item">
+              <div className="stat-icon">
+                <i className={stat.icon}></i>
+              </div>
+              <div className="stat-content">
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
             </div>
-            <div className="stat-content">
-              <div className="stat-number">5+</div>
-              <div className="stat-label">Major Projects</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">
-              <i className="fas fa-code-branch"></i>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Technologies Used</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">
-              <i className="fas fa-users"></i>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">3</div>
-              <div className="stat-label">Companies</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">
-              <i className="fas fa-clock"></i>
-            </div>
-            <div className="stat-content">
-              <div className="stat-number">4.3</div>
-              <div className="stat-label">Years Experience</div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="projects__note">
@@ -276,11 +208,9 @@ const Projects = () => {
               <i className="fas fa-info-circle"></i>
             </div>
             <div className="note-text">
-              <h4>Professional Work Portfolio</h4>
+              <h4>{note.title}</h4>
               <p>
-                The projects showcased here represent my professional experience across enterprise-level 
-                applications. Due to confidentiality agreements and proprietary nature of the work, 
-                specific implementation details and source code cannot be shared publicly.
+                {note.description}
               </p>
             </div>
           </div>

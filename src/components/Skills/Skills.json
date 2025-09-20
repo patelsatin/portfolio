@@ -1,0 +1,149 @@
+{
+  "sectionInfo": {
+    "title": "Technical Skills",
+    "subtitle": "Comprehensive expertise in modern technologies and development practices"
+  },
+  "skillCategories": [
+    {
+      "title": "Programming Languages",
+      "icon": "fas fa-code",
+      "skills": [
+        { "name": "Java", "level": 95, "icon": "fab fa-java" },
+        { "name": "JavaScript", "level": 90, "icon": "fab fa-js-square" },
+        { "name": "TypeScript", "level": 85, "icon": "fab fa-js-square" },
+        { "name": "SQL", "level": 88, "icon": "fas fa-database" }
+      ]
+    },
+    {
+      "title": "Frontend Technologies",
+      "icon": "fas fa-laptop-code",
+      "skills": [
+        { "name": "ReactJS", "level": 92, "icon": "fab fa-react" },
+        { "name": "Redux", "level": 88, "icon": "fab fa-react" },
+        { "name": "Angular", "level": 85, "icon": "fab fa-angular" },
+        { "name": "PrimeNG/PrimeReact", "level": 90, "icon": "fas fa-layer-group" },
+        { "name": "HTML5/CSS3", "level": 93, "icon": "fab fa-html5" },
+        { "name": "Thymeleaf", "level": 80, "icon": "fas fa-file-code" }
+      ]
+    },
+    {
+      "title": "Backend & Microservices",
+      "icon": "fas fa-server",
+      "skills": [
+        { "name": "Spring Boot", "level": 95, "icon": "fas fa-leaf" },
+        { "name": "Spring Data JPA", "level": 90, "icon": "fas fa-leaf" },
+        { "name": "JBoss Fuse", "level": 88, "icon": "fas fa-cogs" },
+        { "name": "Apache Camel", "level": 85, "icon": "fas fa-route" },
+        { "name": "REST APIs", "level": 92, "icon": "fas fa-exchange-alt" },
+        { "name": "Drools Rule Engine", "level": 82, "icon": "fas fa-brain" },
+        { "name": "Microservices Architecture", "level": 88, "icon": "fas fa-cubes" }
+      ]
+    },
+    {
+      "title": "Databases & Caching",
+      "icon": "fas fa-database",
+      "skills": [
+        { "name": "PostgreSQL", "level": 90, "icon": "fas fa-database" },
+        { "name": "MySQL", "level": 88, "icon": "fas fa-database" },
+        { "name": "Couchbase (NoSQL)", "level": 85, "icon": "fas fa-database" },
+        { "name": "Redis Caching", "level": 87, "icon": "fas fa-memory" }
+      ]
+    },
+    {
+      "title": "DevOps & Cloud Tools",
+      "icon": "fas fa-cloud",
+      "skills": [
+        { "name": "Docker", "level": 85, "icon": "fab fa-docker" },
+        { "name": "Kubernetes", "level": 80, "icon": "fas fa-dharmachakra" },
+        { "name": "Git", "level": 92, "icon": "fab fa-git-alt" },
+        { "name": "Jira", "level": 88, "icon": "fab fa-jira" }
+      ]
+    },
+    {
+      "title": "Code Quality & Security",
+      "icon": "fas fa-shield-alt",
+      "skills": [
+        { "name": "SonarQube", "level": 85, "icon": "fas fa-search" },
+        { "name": "Black Duck", "level": 80, "icon": "fas fa-shield-alt" },
+        { "name": "Checkmarx", "level": 80, "icon": "fas fa-lock" },
+        { "name": "Secure Coding Practices", "level": 88, "icon": "fas fa-user-shield" }
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Oracle Certified Professional Java SE",
+      "issuer": "Oracle",
+      "year": "2023",
+      "icon": "fab fa-java"
+    },
+    {
+      "name": "AWS Certified Developer",
+      "issuer": "Amazon Web Services",
+      "year": "2023",
+      "icon": "fab fa-aws"
+    },
+    {
+      "name": "Spring Professional Certification",
+      "issuer": "VMware",
+      "year": "2022",
+      "icon": "fas fa-leaf"
+    }
+  ],
+  "tools": [
+    { "name": "IntelliJ IDEA", "icon": "fas fa-code" },
+    { "name": "VS Code", "icon": "fas fa-code" },
+    { "name": "Eclipse", "icon": "fas fa-code" },
+    { "name": "Postman", "icon": "fas fa-paper-plane" },
+    { "name": "Jenkins", "icon": "fa-brands fa-jenkins" },
+    { "name": "Swagger", "icon": "fas fa-file-alt" },
+    { "name": "Maven", "icon": "fas fa-box" },
+    { "name": "Jira Board", "icon": "fa-brands fa-atlassian" },
+    { "name": "Tabnine", "icon": "fa-brands fa-mailchimp" },
+    { "name": "ChatGPT", "icon": "fa-brands fa-studiovinari" },
+    { "name": "Stack Overflow", "icon": "fa-brands fa-stack-overflow" },
+    { "name": "Gitlab", "icon": "fa-brands fa-gitlab" },
+    { "name": "Sass", "icon": "fa-brands fa-sass" },
+    { "name": "Figma", "icon": "fa-brands fa-figma" }
+  ],
+  "expertiseHighlights": [
+    {
+      "icon": "fas fa-rocket",
+      "title": "Performance Optimization",
+      "description": "API performance optimization to execute under 1 second in production environments"
+    },
+    {
+      "icon": "fas fa-users",
+      "title": "Team Leadership",
+      "description": "Led frontend teams of 3-4 members, managing Jira tasks and streamlining workflows"
+    },
+    {
+      "icon": "fas fa-shield-alt",
+      "title": "Security & Compliance",
+      "description": "Ensuring code security with clean SonarQube, Black Duck, and Checkmarx reports"
+    },
+    {
+      "icon": "fas fa-cogs",
+      "title": "System Integration",
+      "description": "Expertise in Java design patterns and integration patterns for scalable systems"
+    }
+  ],
+  "stats": [
+    {
+      "number": "15+",
+      "label": "Technologies Mastered"
+    },
+    {
+      "number": "4.3",
+      "label": "Years Experience"
+    },
+    {
+      "number": "50+",
+      "label": "APIs Developed"
+    },
+    {
+      "number": "3",
+      "label": "Major Projects"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "name": "satin-patel-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://patelsatin.github.io/portfolio",
+  "homepage": ".",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-free": "^7.0.0",
@@ -11,6 +11,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.7",
+    "firebase": "^12.2.1",
     "gh-pages": "^6.3.0",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.6",
@@ -28,7 +29,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "deploy:firebase": "npm run build && firebase deploy --only hosting",
+    "deploy:firebase:preview": "npm run build && firebase hosting:channel:deploy preview"
   },
   "eslintConfig": {
     "extends": [

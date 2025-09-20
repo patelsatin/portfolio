@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Experience.scss';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
 
-const Experience = () => {
+const Experience = ({ portfolioData, isPublic = false, userId }) => {
   const experienceRef = useRef(null);
   const [activeExperience, setActiveExperience] = useState(0);
+  const { data: hookData, loading, error } = usePortfolioData('experience');
+  const experienceData = isPublic ? portfolioData : hookData;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,142 +27,40 @@ const Experience = () => {
     return () => observer.disconnect();
   }, []);
 
-  const experiences = [
-    {
-      id: 1,
-      company: 'Amdocs',
-      logo: './logos/amdocs.png',
-      position: 'Software Engineer',
-      duration: 'Sep 2024 - Present',
-      location: 'Pune, Maharashtra, India',
-      type: 'Full-time',
-      description: 'Working on Optima telecom management software, developing microservices and frontend components for telecom industry solutions.',
-      responsibilities: [
-        'Developing backend services using Spring Boot, JBoss Fuse, and Apache Camel',
-        'Working with ReactJS and Redux for frontend development',
-        'Integrating Drools rule engine for business logic implementation',
-        'Working with PostgreSQL and Couchbase databases for data management',
-        'Utilizing Docker + kubectl for local development testing and deployment',
-        'Collaborating with cross-functional teams to deliver telecom solutions'
-      ],
-      technologies: ['ReactJS', 'Redux', 'Apache Camel', 'JBoss Fuse', 'Java 8', 'Spring Boot', 'PostgreSQL', 'Couchbase', 'Drools', 'Docker', 'Kubernetes'],
-      achievements: [
-        'Successfully integrated multiple microservices for telecom management',
-        'Improved system performance through optimized database queries',
-        'Contributed to the development of scalable frontend components'
-      ],
-      companyInfo: {
-        industry: 'Telecommunications Software',
-        size: '25,000+ employees',
-        website: 'https://www.amdocs.com'
-      }
-    },
-    {
-      id: 2,
-      company: 'Nagarro',
-      logo: './logos/nagarro.png',
-      position: 'Staff Engineer',
-      duration: 'Feb 2023 - Aug 2024',
-      location: 'Gurgaon, Haryana, India',
-      type: 'Full-time',
-      description: 'Led frontend team development for comprehensive enterprise management systems with document handling and reporting capabilities.',
-      responsibilities: [
-        'Managed and guided frontend development team of 4+ developers',
-        'Led design and implementation of responsive user interfaces using Angular',
-        'Developed RESTful APIs with comprehensive documentation using Spring Boot',
-        'Optimized database schemas and implemented complex business logic',
-        'Enhanced development productivity with modern tools like GitHub Copilot',
-        'Conducted code reviews and mentored junior developers'
-      ],
-      technologies: ['Angular', 'Spring Boot', 'Java 17', 'PrimeNG', 'Redis', 'GitHub Copilot', 'PostgreSQL', 'TypeScript', 'RxJS'],
-      achievements: [
-        'Led successful delivery of 3 major enterprise applications',
-        'Reduced development time by 30% through team optimization',
-        'Implemented automated testing strategies improving code quality',
-        'Mentored 2 junior developers who were promoted during tenure'
-      ],
-      companyInfo: {
-        industry: 'Digital Product Engineering',
-        size: '10,000+ employees',
-        website: 'https://www.nagarro.com'
-      }
-    },
-    {
-      id: 3,
-      company: 'ATCS',
-      logo: './logos/ATCS.png',
-      position: 'Associate Software Engineer',
-      duration: 'Jun 2022 - Feb 2023',
-      location: 'Jaipur, Rajasthan, India',
-      type: 'Full-time',
-      description: 'Developed user-friendly supplier registration platform enabling organizational users to review and approve supplier details for compliance.',
-      responsibilities: [
-        'Solely handled frontend development responsibilities for supplier management platform',
-        'Designed responsive UI components using React and PrimeReact',
-        'Created intuitive user-friendly forms with Redux state management',
-        'Utilized Axios for seamless API integration and data fetching',
-        'Implemented robust access control mechanisms for data security',
-        'Collaborated with backend team for API design and integration'
-      ],
-      technologies: ['ReactJS', 'Spring Boot', 'PostgreSQL', 'Redis', 'PrimeReact', 'Axios', 'Redux', 'JavaScript', 'CSS3'],
-      achievements: [
-        'Delivered supplier management platform ahead of schedule',
-        'Achieved 95% user satisfaction rating for UI/UX design',
-        'Implemented efficient state management reducing load times by 40%',
-        'Zero critical bugs reported in production deployment'
-      ],
-      companyInfo: {
-        industry: 'Digital Product Engineering',
-        size: '10,000+ employees',
-        website: 'https://www.nagarro.com'
-      }
-    },
-    {
-      id: 4,
-      company: 'Tata Consultancy Services',
-      logo: './logos/tcs.png',
-      position: 'Assistant Systems Engineer - Trainee',
-      duration: 'Nov 2020 - Jan 2022',
-      location: 'Pune, Maharashtra, India',
-      type: 'Full-time',
-      description: 'Developed internal analytics dashboard providing valuable insights and data visualization with comprehensive data retrieval and transformation pipelines.',
-      responsibilities: [
-        'Developed comprehensive data retrieval pipelines from multiple database systems',
-        'Worked with advanced data transformation and processing tools',
-        'Created and maintained datasets for data governance and management using Collibra',
-        'Built interactive and user-friendly dashboard components using ReactJS',
-        'Implemented data visualization features for business intelligence',
-        'Collaborated with data analysts and business stakeholders for requirements'
-      ],
-      technologies: ['ReactJS', 'MySQL', 'Sparkola', 'Collibra', 'JavaScript', 'Python', 'SQL', 'Data Visualization', 'ETL'],
-      achievements: [
-        'Built analytics dashboard serving 1000+ internal users',
-        'Processed and visualized data from 10+ different data sources',
-        'Reduced data processing time by 70% through pipeline optimization',
-        'Received "Outstanding Performer" award for exceptional contribution'
-      ],
-      companyInfo: {
-        industry: 'IT Services & Consulting',
-        size: '500,000+ employees',
-        website: 'https://www.tcs.com'
-      }
-    }
-  ];
+  if (loading) {
+    return (
+      <section id="experience" className="experience section" ref={experienceRef}>
+        <div className="container">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading experience section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const totalExperience = {
-    years: 4,
-    months: 3,
-    companies: 3,
-    projects: 8
-  };
+  if (error || !experienceData) {
+    return (
+      <section id="experience" className="experience section" ref={experienceRef}>
+        <div className="container">
+          <div className="error-container">
+            <p>Error loading experience section</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const { sectionInfo, totalExperience, experiences, summary } = experienceData;
 
   return (
     <section id="experience" className="experience section" ref={experienceRef}>
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Professional Experience</h2>
+          <h2 className="section-title">{sectionInfo.title}</h2>
           <p className="section-subtitle">
-            {totalExperience.years}+ years of experience building scalable applications and leading development teams
+            {sectionInfo.subtitle}
           </p>
         </div>
 
@@ -320,25 +221,17 @@ const Experience = () => {
 
         <div className="experience__summary">
           <div className="summary-content">
-            <h3>Career Progression</h3>
+            <h3>{summary.title}</h3>
             <p>
-              My journey in software development has been marked by continuous growth and increasing responsibilities. 
-              Starting as a Systems Engineer at TCS, I've progressed to senior roles, leading teams and delivering 
-              complex enterprise solutions across telecommunications, digital product engineering, and IT consulting domains.
+              {summary.description}
             </p>
             <div className="progression-highlights">
-              <div className="highlight">
-                <i className="fas fa-arrow-up"></i>
-                <span>Promoted 4 times across different organizations</span>
-              </div>
-              <div className="highlight">
-                <i className="fas fa-users-cog"></i>
-                <span>Led and mentored development teams</span>
-              </div>
-              <div className="highlight">
-                <i className="fas fa-trophy"></i>
-                <span>Consistently delivered projects ahead of schedule</span>
-              </div>
+              {summary.highlights.map((highlight, index) => (
+                <div key={index} className="highlight">
+                  <i className={highlight.icon}></i>
+                  <span>{highlight.text}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,0 +1,113 @@
+{
+  "sectionInfo": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to collaborate? Let's discuss your next project or opportunity"
+  },
+  "contactInfo": {
+    "header": {
+      "title": "Let's Connect",
+      "description": "I'm always interested in new opportunities, challenging projects, and meaningful collaborations. Whether you have a project in mind or just want to say hello, I'd love to hear from you."
+    },
+    "contactCards": [
+      {
+        "icon": "fas fa-envelope",
+        "title": "Email",
+        "value": "satin15patel1996@gmail.com",
+        "link": "mailto:satin15patel1996@gmail.com",
+        "description": "Send me an email anytime"
+      },
+      {
+        "icon": "fas fa-phone",
+        "title": "Phone",
+        "value": "+91 9617307122",
+        "link": "tel:+919617307122",
+        "description": "Call me for urgent matters"
+      },
+      {
+        "icon": "fas fa-map-marker-alt",
+        "title": "Location",
+        "value": "Pune Maharashtra, India",
+        "link": "https://maps.google.com/?q=Pune,Maharashtra,India",
+        "description": "Available for remote work"
+      },
+      {
+        "icon": "fab fa-linkedin",
+        "title": "LinkedIn",
+        "value": "linkedin.com/in/satin-patel",
+        "link": "https://www.linkedin.com/in/satin-patel-07967a150/",
+        "description": "Connect with me professionally"
+      }
+    ]
+  },
+  "formInfo": {
+    "header": {
+      "title": "Send Message",
+      "description": "Fill out the form below and I'll get back to you as soon as possible."
+    },
+    "fields": {
+      "name": {
+        "label": "Full Name *",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email Address *",
+        "placeholder": "your.email@example.com"
+      },
+      "subject": {
+        "label": "Subject *",
+        "placeholder": "Select a subject",
+        "options": [
+          { "value": "", "text": "Select a subject" },
+          { "value": "job-opportunity", "text": "Job Opportunity" },
+          { "value": "freelance-project", "text": "Freelance Project" },
+          { "value": "collaboration", "text": "Collaboration" },
+          { "value": "consultation", "text": "Consultation" },
+          { "value": "general-inquiry", "text": "General Inquiry" },
+          { "value": "other", "text": "Other" }
+        ]
+      },
+      "message": {
+        "label": "Message *",
+        "placeholder": "Tell me about your project, opportunity, or just say hello..."
+      }
+    },
+    "submitButton": {
+      "text": "Send Message",
+      "sendingText": "Sending...",
+      "successMessage": "Message sent successfully! I'll get back to you soon.",
+      "errorMessage": "Something went wrong. Please try again or contact me directly."
+    }
+  },
+  "emailConfig": {
+    "serviceId": "service_xpvd55h",
+    "templateId": "template_4di2yup",
+    "publicKey": "52JGeZlcidBkECvWK",
+    "toEmail": "satin15patel1996@gmail.com"
+  },
+  "socialLinks": [
+    {
+      "icon": "fab fa-linkedin",
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/satin-patel-07967a150/",
+      "color": "#0077b5"
+    },
+    {
+      "icon": "fab fa-github",
+      "name": "GitHub",
+      "url": "https://github.com/satinpatel",
+      "color": "#333"
+    },
+    {
+      "icon": "fab fa-twitter",
+      "name": "Twitter",
+      "url": "https://twitter.com/satinpatel",
+      "color": "#1da1f2"
+    },
+    {
+      "icon": "fas fa-envelope",
+      "name": "Email",
+      "url": "mailto:satin15patel1996@gmail.com",
+      "color": "#ea4335"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "personalInfo": {
+    "name": "Satin Patel",
+    "title": "Full Stack Developer",
+    "description": "Passionate about creating innovative web solutions and bringing ideas to life through code."
+  },
+  "skills": [
+    "Java Development",
+    "Spring Boot",
+    "ReactJS",
+    "JavaScript ES6+",
+    "REST APIs",
+    "Microservices",
+    "PostgreSQL",
+    "Docker",
+    "Redux",
+    "Spring Data JPA",
+    "TypeScript",
+    "Angular",
+    "PrimeReact",
+    "Redis Caching",
+    "Git & DevOps",
+    "AWS Cloud",
+    "Secure Coding"
+  ],
+  "socialLinks": {
+    "linkedin": "https://www.linkedin.com/in/satin-patel-07967a150/",
+    "github": "https://github.com/patelsatin",
+    "twitter": "https://twitter.com/satinpatel",
+    "medium": "https://medium.com/@satin15patel1996"
+  }
+}

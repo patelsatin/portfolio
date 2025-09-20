@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import './Contact.scss';
+import { usePortfolioData } from '../../hooks/usePortfolioData';
+import { sendContactEmail } from '../../services/emailService';
 
-const Contact = () => {
+const Contact = ({ portfolioData, isPublic = false, userId }) => {
   const contactRef = useRef(null);
+  const { data: hookData, loading, error } = usePortfolioData('contact');
+  const contactData = isPublic ? portfolioData : hookData;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,24 +48,10 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const serviceId = 'service_xpvd55h'; 
-      const templateId = 'template_4di2yup';
-      const publicKey = '52JGeZlcidBkECvWK';
-
-      // Prepare template parameters
-      const templateParams = {
-        to_email: 'satin15patel1996@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        reply_to: formData.email
-      };
-
-      // Send email using EmailJS
-      const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Send email using the email service
+      const result = await sendContactEmail(formData);
       
-      if (result.status === 200) {
+      if (result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -77,87 +66,54 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: 'fas fa-envelope',
-      title: 'Email',
-      value: 'satin15patel1996@gmail.com',
-      link: 'mailto:satin15patel1996@gmail.com',
-      description: 'Send me an email anytime'
-    },
-    {
-      icon: 'fas fa-phone',
-      title: 'Phone',
-      value: '+91 9617307122',
-      link: 'tel:+919617307122',
-      description: 'Call me for urgent matters'
-    },
-    {
-      icon: 'fas fa-map-marker-alt',
-      title: 'Location',
-      value: 'Pune Maharashtra, India',
-      link: 'https://maps.google.com/?q=Pune,Maharashtra,India',
-      description: 'Available for remote work'
-    },
-    {
-      icon: 'fab fa-linkedin',
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/satin-patel',
-      link: 'https://www.linkedin.com/in/satin-patel-07967a150/',
-      description: 'Connect with me professionally'
-    }
-  ];
+  if (loading) {
+    return (
+      <section id="contact" className="contact section" ref={contactRef}>
+        <div className="container">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Loading contact section...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const socialLinks = [
-    {
-      icon: 'fab fa-linkedin',
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/satin-patel-07967a150/',
-      color: '#0077b5'
-    },
-    {
-      icon: 'fab fa-github',
-      name: 'GitHub',
-      url: 'https://github.com/satinpatel',
-      color: '#333'
-    },
-    {
-      icon: 'fab fa-twitter',
-      name: 'Twitter',
-      url: 'https://twitter.com/satinpatel',
-      color: '#1da1f2'
-    },
-    {
-      icon: 'fas fa-envelope',
-      name: 'Email',
-      url: 'mailto:satin15patel1996@gmail.com',
-      color: '#ea4335'
-    }
-  ];
+  if (error || !contactData) {
+    return (
+      <section id="contact" className="contact section" ref={contactRef}>
+        <div className="container">
+          <div className="error-container">
+            <p>Error loading contact section</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const { sectionInfo, contactInfo, formInfo, emailConfig, socialLinks } = contactData;
 
   return (
     <section id="contact" className="contact section" ref={contactRef}>
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">{sectionInfo.title}</h2>
           <p className="section-subtitle">
-            Ready to collaborate? Let's discuss your next project or opportunity
+            {sectionInfo.subtitle}
           </p>
         </div>
 
         <div className="contact__content">
           <div className="contact__info">
             <div className="info-header">
-              <h3>Let's Connect</h3>
+              <h3>{contactInfo.header.title}</h3>
               <p>
-                I'm always interested in new opportunities, challenging projects,
-                and meaningful collaborations. Whether you have a project in mind
-                or just want to say hello, I'd love to hear from you.
+                {contactInfo.header.description}
               </p>
             </div>
 
             <div className="contact-cards">
-              {contactInfo.map((info, index) => (
+              {contactInfo.contactCards.map((info, index) => (
                 <a
                   key={index}
                   href={info.link}
@@ -183,14 +139,14 @@ const Contact = () => {
 
           <div className="contact__form">
             <div className="form-header">
-              <h3>Send Message</h3>
-              <p>Fill out the form below and I'll get back to you as soon as possible.</p>
+              <h3>{formInfo.header.title}</h3>
+              <p>{formInfo.header.description}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="contact-form">
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
+                  <label htmlFor="name">{formInfo.fields.name.label}</label>
                   <input
                     type="text"
                     id="name"
@@ -198,12 +154,12 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    placeholder="Your full name"
+                    placeholder={formInfo.fields.name.placeholder}
                     className="form-input"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
+                  <label htmlFor="email">{formInfo.fields.email.label}</label>
                   <input
                     type="email"
                     id="email"
@@ -211,14 +167,14 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    placeholder="your.email@example.com"
+                    placeholder={formInfo.fields.email.placeholder}
                     className="form-input"
                   />
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Subject *</label>
+                <label htmlFor="subject">{formInfo.fields.subject.label}</label>
                 <select
                   id="subject"
                   name="subject"
@@ -227,25 +183,21 @@ const Contact = () => {
                   required
                   className="form-select"
                 >
-                  <option value="">Select a subject</option>
-                  <option value="job-opportunity">Job Opportunity</option>
-                  <option value="freelance-project">Freelance Project</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="consultation">Consultation</option>
-                  <option value="general-inquiry">General Inquiry</option>
-                  <option value="other">Other</option>
+                  {formInfo.fields.subject.options.map((option, index) => (
+                    <option key={index} value={option.value}>{option.text}</option>
+                  ))}
                 </select>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">{formInfo.fields.message.label}</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  placeholder="Tell me about your project, opportunity, or just say hello..."
+                  placeholder={formInfo.fields.message.placeholder}
                   rows="6"
                   className="form-textarea"
                 ></textarea>
@@ -259,12 +211,12 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <i className="fas fa-spinner fa-spin"></i>
-                    Sending...
+                    {formInfo.submitButton.sendingText}
                   </>
                 ) : (
                   <>
                     <i className="fas fa-paper-plane"></i>
-                    Send Message
+                    {formInfo.submitButton.text}
                   </>
                 )}
               </button>
@@ -274,12 +226,12 @@ const Contact = () => {
                   {submitStatus === 'success' ? (
                     <>
                       <i className="fas fa-check-circle"></i>
-                      Message sent successfully! I'll get back to you soon.
+                      {formInfo.submitButton.successMessage}
                     </>
                   ) : (
                     <>
                       <i className="fas fa-exclamation-circle"></i>
-                      Something went wrong. Please try again or contact me directly.
+                      {formInfo.submitButton.errorMessage}
                     </>
                   )}
                 </div>
@@ -292,18 +244,17 @@ const Contact = () => {
           <div className="form-footer">
             <div className="social-links" style={{display: 'flex', justifyContent: 'center'}}>
               <div className="hero__social">
-                <a href="#" className="social-link github">
-                  <i className="fab fa-github"></i>
-                </a>
-                <a href="#" className="social-link linkedin">
-                  <i className="fab fa-linkedin"></i>
-                </a>
-                <a href="#" className="social-link twitter">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-link dribbble">
-                  <i className="fab fa-dribbble"></i>
-                </a>
+                {socialLinks.map((link, index) => (
+                  <a 
+                    key={index}
+                    href={link.url} 
+                    className="social-link"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <i className={link.icon}></i>
+                  </a>
+                ))}
               </div>
             </div>
           </div>

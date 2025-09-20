@@ -1,0 +1,763 @@
+FIREBASE PORTFOLIO DATA - COMPLETE DOCUMENT
+============================================
+
+This is the complete JSON structure you need to add to your Firebase Firestore document.
+Replace your existing document with this data structure.
+
+Document ID: rDxUQY3fwmUzA6oi3VCEWXfJDo83
+Collection: users
+
+{
+  "createdAt": "2025-09-07T04:58:02.000Z",
+  "displayName": "Satin Patel",
+  "email": "satin15patel1996@gmail.com",
+  "phoneNumber": "09617307122",
+  "updatedAt": "2025-09-07T04:58:25.000Z",
+  "userId": "rDxUQY3fwmUzA6oi3VCEWXfJDo83",
+  "portfolioData": {
+    "about": {
+      "sectionInfo": {
+        "title": "About Me",
+        "subtitle": "Dynamic Full-stack Java developer with 4.3 years of hands-on experience"
+      },
+      "personalInfo": {
+        "greeting": "Hello! I'm Satin Patel",
+        "description": [
+          "I'm a dynamic Full-stack Java developer with 4.3 years of hands-on experience, adept at driving successful project outcomes through effective leadership and team collaboration. I specialize in building enterprise-grade applications using modern technologies like Spring Boot, ReactJS, and microservices architecture.",
+          "My expertise lies in project management, consistently delivering high-quality solutions by aligning client requirements with innovative technical solutions. I have a proven track record of optimizing API performance, implementing secure coding practices, and leading frontend development teams.",
+          "I'm committed to excellence in service delivery, engaging closely with clients to understand their needs and deliver exceptional results. When I'm not coding, I'm exploring new technologies and contributing to open-source projects."
+        ]
+      },
+      "skillsOverview": {
+        "title": "What I Do",
+        "skills": [
+          {
+            "icon": "fab fa-java",
+            "title": "Backend Development",
+            "description": "Building robust microservices using Spring Boot, JBoss Fuse, Apache Camel, and implementing Drools rule engine for business logic."
+          },
+          {
+            "icon": "fab fa-react",
+            "title": "Frontend Development",
+            "description": "Creating responsive interfaces using ReactJS, Angular, Redux, PrimeNG, and PrimeReact with focus on user experience."
+          },
+          {
+            "icon": "fas fa-database",
+            "title": "Database Management",
+            "description": "Working with PostgreSQL, MySQL, Couchbase (NoSQL), and implementing Redis caching for performance optimization."
+          },
+          {
+            "icon": "fas fa-cloud",
+            "title": "DevOps & Cloud",
+            "description": "Utilizing Docker, Kubernetes, CI/CD pipelines, and ensuring code quality with SonarQube, Black Duck, and Checkmarx."
+          }
+        ]
+      },
+      "stats": [
+        { "number": "4.3+", "label": "Years Experience" },
+        { "number": "15+", "label": "Projects Completed" },
+        { "number": "50+", "label": "APIs Developed" },
+        { "number": "3", "label": "Awards Won" }
+      ],
+      "achievements": [
+        {
+          "title": "The Brightest Mind Award",
+          "company": "Nagarro",
+          "year": "2023-2024"
+        },
+        {
+          "title": "Best of the Best Award",
+          "company": "Nagarro",
+          "year": "Q3 & Q4 2022"
+        },
+        {
+          "title": "On the Spot Gems Award",
+          "company": "TCS",
+          "year": "2021"
+        },
+        {
+          "title": "Go Above And Beyond",
+          "company": "Amdocs",
+          "year": "2025"
+        },
+        {
+          "title": "Knowledge Champion",
+          "company": "Amdocs",
+          "year": "2025"
+        },
+        {
+          "title": "Impact Master",
+          "company": "Amdocs",
+          "year": "2025"
+        }
+      ],
+      "education": {
+        "title": "Education",
+        "degree": "Bachelor of Engineering in Information Technology",
+        "institution": "Samrat Ashok Technological Institute, Vidisha",
+        "period": "Aug 2016 - June 2020"
+      },
+      "image": {
+        "src": "./aboutme.jpeg",
+        "alt": "Satin Patel - Java Full Stack Developer"
+      }
+    },
+    "contact": {
+      "sectionInfo": {
+        "title": "Get In Touch",
+        "subtitle": "Ready to collaborate? Let's discuss your next project or opportunity"
+      },
+      "contactInfo": {
+        "header": {
+          "title": "Let's Connect",
+          "description": "I'm always interested in new opportunities, challenging projects, and meaningful collaborations. Whether you have a project in mind or just want to say hello, I'd love to hear from you."
+        },
+        "contactCards": [
+          {
+            "icon": "fas fa-envelope",
+            "title": "Email",
+            "value": "satin15patel1996@gmail.com",
+            "link": "mailto:satin15patel1996@gmail.com",
+            "description": "Send me an email anytime"
+          },
+          {
+            "icon": "fas fa-phone",
+            "title": "Phone",
+            "value": "+91 9617307122",
+            "link": "tel:+919617307122",
+            "description": "Call me for urgent matters"
+          },
+          {
+            "icon": "fas fa-map-marker-alt",
+            "title": "Location",
+            "value": "Pune Maharashtra, India",
+            "link": "https://maps.google.com/?q=Pune,Maharashtra,India",
+            "description": "Available for remote work"
+          },
+          {
+            "icon": "fab fa-linkedin",
+            "title": "LinkedIn",
+            "value": "linkedin.com/in/satin-patel",
+            "link": "https://www.linkedin.com/in/satin-patel-07967a150/",
+            "description": "Connect with me professionally"
+          }
+        ]
+      },
+      "formInfo": {
+        "header": {
+          "title": "Send Message",
+          "description": "Fill out the form below and I'll get back to you as soon as possible."
+        },
+        "fields": {
+          "name": {
+            "label": "Full Name *",
+            "placeholder": "Your full name"
+          },
+          "email": {
+            "label": "Email Address *",
+            "placeholder": "your.email@example.com"
+          },
+          "subject": {
+            "label": "Subject *",
+            "placeholder": "Select a subject",
+            "options": [
+              { "value": "", "text": "Select a subject" },
+              { "value": "job-opportunity", "text": "Job Opportunity" },
+              { "value": "freelance-project", "text": "Freelance Project" },
+              { "value": "collaboration", "text": "Collaboration" },
+              { "value": "consultation", "text": "Consultation" },
+              { "value": "general-inquiry", "text": "General Inquiry" },
+              { "value": "other", "text": "Other" }
+            ]
+          },
+          "message": {
+            "label": "Message *",
+            "placeholder": "Tell me about your project, opportunity, or just say hello..."
+          }
+        },
+        "submitButton": {
+          "text": "Send Message",
+          "sendingText": "Sending...",
+          "successMessage": "Message sent successfully! I'll get back to you soon.",
+          "errorMessage": "Something went wrong. Please try again or contact me directly."
+        }
+      },
+      "emailConfig": {
+        "serviceId": "service_xpvd55h",
+        "templateId": "template_4di2yup",
+        "publicKey": "52JGeZlcidBkECvWK",
+        "toEmail": "satin15patel1996@gmail.com"
+      },
+      "socialLinks": [
+        {
+          "icon": "fab fa-linkedin",
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/satin-patel-07967a150/",
+          "color": "#0077b5"
+        },
+        {
+          "icon": "fab fa-github",
+          "name": "GitHub",
+          "url": "https://github.com/satinpatel",
+          "color": "#333"
+        },
+        {
+          "icon": "fab fa-twitter",
+          "name": "Twitter",
+          "url": "https://twitter.com/satinpatel",
+          "color": "#1da1f2"
+        },
+        {
+          "icon": "fas fa-envelope",
+          "name": "Email",
+          "url": "mailto:satin15patel1996@gmail.com",
+          "color": "#ea4335"
+        }
+      ]
+    },
+    "experience": {
+      "sectionInfo": {
+        "title": "Professional Experience",
+        "subtitle": "4+ years of experience building scalable applications and leading development teams"
+      },
+      "totalExperience": {
+        "years": 4,
+        "months": 3,
+        "companies": 3,
+        "projects": 8
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "company": "Amdocs",
+          "logo": "./logos/amdocs.png",
+          "position": "Software Engineer",
+          "duration": "Sep 2024 - Present",
+          "location": "Pune, Maharashtra, India",
+          "type": "Full-time",
+          "description": "Working on Optima telecom management software, developing microservices and frontend components for telecom industry solutions.",
+          "responsibilities": [
+            "Developing backend services using Spring Boot, JBoss Fuse, and Apache Camel",
+            "Working with ReactJS and Redux for frontend development",
+            "Integrating Drools rule engine for business logic implementation",
+            "Working with PostgreSQL and Couchbase databases for data management",
+            "Utilizing Docker + kubectl for local development testing and deployment",
+            "Collaborating with cross-functional teams to deliver telecom solutions"
+          ],
+          "technologies": ["ReactJS", "Redux", "Apache Camel", "JBoss Fuse", "Java 8", "Spring Boot", "PostgreSQL", "Couchbase", "Drools", "Docker", "Kubernetes"],
+          "achievements": [
+            "Successfully integrated multiple microservices for telecom management",
+            "Improved system performance through optimized database queries",
+            "Contributed to the development of scalable frontend components"
+          ],
+          "companyInfo": {
+            "industry": "Telecommunications Software",
+            "size": "25,000+ employees",
+            "website": "https://www.amdocs.com"
+          }
+        },
+        {
+          "id": 2,
+          "company": "Nagarro",
+          "logo": "./logos/nagarro.png",
+          "position": "Staff Engineer",
+          "duration": "Feb 2023 - Aug 2024",
+          "location": "Gurgaon, Haryana, India",
+          "type": "Full-time",
+          "description": "Led frontend team development for comprehensive enterprise management systems with document handling and reporting capabilities.",
+          "responsibilities": [
+            "Managed and guided frontend development team of 4+ developers",
+            "Led design and implementation of responsive user interfaces using Angular",
+            "Developed RESTful APIs with comprehensive documentation using Spring Boot",
+            "Optimized database schemas and implemented complex business logic",
+            "Enhanced development productivity with modern tools like GitHub Copilot",
+            "Conducted code reviews and mentored junior developers"
+          ],
+          "technologies": ["Angular", "Spring Boot", "Java 17", "PrimeNG", "Redis", "GitHub Copilot", "PostgreSQL", "TypeScript", "RxJS"],
+          "achievements": [
+            "Led successful delivery of 3 major enterprise applications",
+            "Reduced development time by 30% through team optimization",
+            "Implemented automated testing strategies improving code quality",
+            "Mentored 2 junior developers who were promoted during tenure"
+          ],
+          "companyInfo": {
+            "industry": "Digital Product Engineering",
+            "size": "10,000+ employees",
+            "website": "https://www.nagarro.com"
+          }
+        },
+        {
+          "id": 3,
+          "company": "ATCS",
+          "logo": "./logos/ATCS.png",
+          "position": "Associate Software Engineer",
+          "duration": "Jun 2022 - Feb 2023",
+          "location": "Jaipur, Rajasthan, India",
+          "type": "Full-time",
+          "description": "Developed user-friendly supplier registration platform enabling organizational users to review and approve supplier details for compliance.",
+          "responsibilities": [
+            "Solely handled frontend development responsibilities for supplier management platform",
+            "Designed responsive UI components using React and PrimeReact",
+            "Created intuitive user-friendly forms with Redux state management",
+            "Utilized Axios for seamless API integration and data fetching",
+            "Implemented robust access control mechanisms for data security",
+            "Collaborated with backend team for API design and integration"
+          ],
+          "technologies": ["ReactJS", "Spring Boot", "PostgreSQL", "Redis", "PrimeReact", "Axios", "Redux", "JavaScript", "CSS3"],
+          "achievements": [
+            "Delivered supplier management platform ahead of schedule",
+            "Achieved 95% user satisfaction rating for UI/UX design",
+            "Implemented efficient state management reducing load times by 40%",
+            "Zero critical bugs reported in production deployment"
+          ],
+          "companyInfo": {
+            "industry": "Digital Product Engineering",
+            "size": "10,000+ employees",
+            "website": "https://www.nagarro.com"
+          }
+        },
+        {
+          "id": 4,
+          "company": "Tata Consultancy Services",
+          "logo": "./logos/tcs.png",
+          "position": "Assistant Systems Engineer - Trainee",
+          "duration": "Nov 2020 - Jan 2022",
+          "location": "Pune, Maharashtra, India",
+          "type": "Full-time",
+          "description": "Developed internal analytics dashboard providing valuable insights and data visualization with comprehensive data retrieval and transformation pipelines.",
+          "responsibilities": [
+            "Developed comprehensive data retrieval pipelines from multiple database systems",
+            "Worked with advanced data transformation and processing tools",
+            "Created and maintained datasets for data governance and management using Collibra",
+            "Built interactive and user-friendly dashboard components using ReactJS",
+            "Implemented data visualization features for business intelligence",
+            "Collaborated with data analysts and business stakeholders for requirements"
+          ],
+          "technologies": ["ReactJS", "MySQL", "Sparkola", "Collibra", "JavaScript", "Python", "SQL", "Data Visualization", "ETL"],
+          "achievements": [
+            "Built analytics dashboard serving 1000+ internal users",
+            "Processed and visualized data from 10+ different data sources",
+            "Reduced data processing time by 70% through pipeline optimization",
+            "Received \"Outstanding Performer\" award for exceptional contribution"
+          ],
+          "companyInfo": {
+            "industry": "IT Services & Consulting",
+            "size": "500,000+ employees",
+            "website": "https://www.tcs.com"
+          }
+        }
+      ],
+      "summary": {
+        "title": "Career Progression",
+        "description": "My journey in software development has been marked by continuous growth and increasing responsibilities. Starting as a Systems Engineer at TCS, I've progressed to senior roles, leading teams and delivering complex enterprise solutions across telecommunications, digital product engineering, and IT consulting domains.",
+        "highlights": [
+          {
+            "icon": "fas fa-arrow-up",
+            "text": "Promoted 4 times across different organizations"
+          },
+          {
+            "icon": "fas fa-users-cog",
+            "text": "Led and mentored development teams"
+          },
+          {
+            "icon": "fas fa-trophy",
+            "text": "Consistently delivered projects ahead of schedule"
+          }
+        ]
+      }
+    },
+    "header": {
+      "logo": {
+        "text": "Portfolio"
+      },
+      "navItems": [
+        { "href": "#home", "label": "Home" },
+        { "href": "#about", "label": "About" },
+        { "href": "#skills", "label": "Skills" },
+        { "href": "#experience", "label": "Experience" },
+        { "href": "#projects", "label": "Projects" },
+        { "href": "#contact", "label": "Contact" }
+      ]
+    },
+    "hero": {
+      "personalInfo": {
+        "greeting": "Hello, I'm",
+        "name": "Satin Patel",
+        "title": "Full Stack Developer",
+        "description": "Passionate about creating innovative web solutions and bringing ideas to life through code.",
+        "expertiseLabel": "I have expertise in:",
+        "profileImage": "./pp.jpg",
+        "profileImageAlt": "Profile"
+      },
+      "skills": [
+        "Java Development",
+        "Spring Boot",
+        "ReactJS",
+        "JavaScript ES6+",
+        "REST APIs",
+        "Microservices",
+        "PostgreSQL",
+        "Docker",
+        "Redux",
+        "Spring Data JPA",
+        "TypeScript",
+        "Angular",
+        "PrimeReact",
+        "Redis Caching",
+        "Git & DevOps",
+        "AWS Cloud",
+        "Secure Coding"
+      ],
+      "actions": [
+        {
+          "text": "View My Work",
+          "href": "#experience",
+          "className": "btn btn-primary"
+        },
+        {
+          "text": "Download CV",
+          "href": "./resume.pdf",
+          "className": "btn btn-outline",
+          "download": true
+        }
+      ],
+      "socialLinks": [
+        {
+          "platform": "GitHub",
+          "href": "https://github.com/patelsatin",
+          "icon": "fab fa-github",
+          "className": "social-link github",
+          "ariaLabel": "Visit GitHub Profile"
+        },
+        {
+          "platform": "LinkedIn",
+          "href": "https://www.linkedin.com/in/satin-patel-07967a150/",
+          "icon": "fab fa-linkedin-in",
+          "className": "social-link linkedin",
+          "ariaLabel": "Visit LinkedIn Profile"
+        },
+        {
+          "platform": "Twitter",
+          "href": "https://twitter.com/satinpatel",
+          "icon": "fab fa-twitter",
+          "className": "social-link twitter",
+          "ariaLabel": "Visit Twitter Profile"
+        },
+        {
+          "platform": "Medium",
+          "href": "https://medium.com/@satin15patel1996",
+          "icon": "fab fa-medium",
+          "className": "social-link dribbble",
+          "ariaLabel": "Visit Dribbble Profile"
+        }
+      ],
+      "animationSettings": {
+        "typeSpeed": 100,
+        "deleteSpeed": 50,
+        "pauseTime": 2000
+      }
+    },
+    "projects": {
+      "sectionInfo": {
+        "title": "Projects",
+        "subtitle": "Showcasing my expertise in full-stack development and enterprise solutions"
+      },
+      "projects": [
+        {
+          "id": 1,
+          "title": "Telecom Management Software",
+          "category": "enterprise",
+          "company": "Amdocs",
+          "duration": "Sep 2024 - Present",
+          "description": "Working on Optima telecom management software, developing microservices and frontend components for telecom industry solutions.",
+          "technologies": ["ReactJS", "Redux", "Apache Camel", "JBoss Fuse", "Java 8", "Spring Boot", "PostgreSQL", "Couchbase", "Drools"],
+          "features": [
+            "Developing backend services using Spring Boot, JBoss Fuse, and Apache Camel",
+            "Working with ReactJS and Redux for frontend development",
+            "Integrating Drools rule engine for business logic",
+            "Working with PostgreSQL and Couchbase databases",
+            "Utilizing Docker + kubectl for local development testing"
+          ],
+          "image": "./logos/amdocs.png",
+          "status": "In Progress"
+        },
+        {
+          "id": 2,
+          "title": "Enterprise Management System",
+          "category": "enterprise",
+          "company": "Nagarro",
+          "duration": "Jan 2023 - Aug 2024",
+          "description": "Led frontend team development for comprehensive enterprise management system with document handling and reporting capabilities.",
+          "technologies": ["Angular", "Spring Boot", "Java 17", "PrimeNG", "Redis", "GitHub Copilot", "PostgreSQL"],
+          "features": [
+            "Managed and guided frontend development team",
+            "Led design and implementation of responsive user interfaces",
+            "Developed RESTful APIs with comprehensive documentation",
+            "Optimized database schemas and implemented business logic",
+            "Enhanced development productivity with modern tools"
+          ],
+          "image": "./logos/nagarro.png",
+          "status": "Completed"
+        },
+        {
+          "id": 3,
+          "title": "Supplier Management Platform",
+          "category": "web-app",
+          "company": "Nagarro",
+          "duration": "Jun 2022 - Dec 2022",
+          "description": "User-friendly supplier registration platform enabling organizational users to review and approve supplier details for compliance.",
+          "technologies": ["ReactJS", "Spring Boot", "PostgreSQL", "Redis", "PrimeReact", "Axios", "Redux"],
+          "features": [
+            "Solely handled frontend development responsibilities",
+            "Designed responsive UI with React and PrimeReact",
+            "Created user-friendly forms with Redux state management",
+            "Utilized Axios for seamless API integration",
+            "Implemented robust access control for data security"
+          ],
+          "image": "./logos/nagarro.png",
+          "status": "Completed"
+        },
+        {
+          "id": 4,
+          "title": "Automated Reporting System",
+          "category": "web-app",
+          "company": "Nagarro",
+          "duration": "Mar 2022 - May 2022",
+          "description": "Automated system for team data management, calculations, and collaborative reviews with dynamic report generation capabilities.",
+          "technologies": ["Angular 7/14", "Spring Boot", "PostgreSQL", "Thymeleaf", "Redis"],
+          "features": [
+            "Migrated existing Angular 7 module to Angular 14",
+            "Implemented server-to-server communication for REST APIs",
+            "Designed dynamic screens for versatile data management",
+            "Developed APIs for dynamic document generation",
+            "Integrated multi-department approval processes"
+          ],
+          "image": "./logos/nagarro.png",
+          "status": "Completed"
+        },
+        {
+          "id": 5,
+          "title": "Internal Analytics Dashboard",
+          "category": "dashboard",
+          "company": "TCS",
+          "duration": "Nov 2020 - Jan 2022",
+          "description": "Internal dashboard providing valuable insights and data visualization with comprehensive data retrieval and transformation pipelines.",
+          "technologies": ["ReactJS", "MySQL", "Sparkola", "Collibra", "JavaScript"],
+          "features": [
+            "Developed data retrieval pipelines from database systems",
+            "Worked with data transformation and processing tools",
+            "Created datasets for data governance and management",
+            "Built interactive and user-friendly dashboard components",
+            "Implemented comprehensive data visualization features"
+          ],
+          "image": "./logos/tcs.png",
+          "status": "Completed"
+        }
+      ],
+      "categories": [
+        { "id": "all", "name": "All Projects" },
+        { "id": "enterprise", "name": "Enterprise" },
+        { "id": "web-app", "name": "Web Applications" },
+        { "id": "dashboard", "name": "Dashboards" }
+      ],
+      "stats": [
+        {
+          "icon": "fas fa-project-diagram",
+          "number": "5+",
+          "label": "Major Projects"
+        },
+        {
+          "icon": "fas fa-code-branch",
+          "number": "15+",
+          "label": "Technologies Used"
+        },
+        {
+          "icon": "fas fa-users",
+          "number": "3",
+          "label": "Companies"
+        },
+        {
+          "icon": "fas fa-clock",
+          "number": "4.3",
+          "label": "Years Experience"
+        }
+      ],
+      "note": {
+        "title": "Professional Work Portfolio",
+        "description": "The projects showcased here represent my professional experience across enterprise-level applications. Due to confidentiality agreements and proprietary nature of the work, specific implementation details and source code cannot be shared publicly."
+      }
+    },
+    "skills": {
+      "sectionInfo": {
+        "title": "Technical Skills",
+        "subtitle": "Comprehensive expertise in modern technologies and development practices"
+      },
+      "skillCategories": [
+        {
+          "title": "Programming Languages",
+          "icon": "fas fa-code",
+          "skills": [
+            { "name": "Java", "level": 95, "icon": "fab fa-java" },
+            { "name": "JavaScript", "level": 90, "icon": "fab fa-js-square" },
+            { "name": "TypeScript", "level": 85, "icon": "fab fa-js-square" },
+            { "name": "SQL", "level": 88, "icon": "fas fa-database" }
+          ]
+        },
+        {
+          "title": "Frontend Technologies",
+          "icon": "fas fa-laptop-code",
+          "skills": [
+            { "name": "ReactJS", "level": 92, "icon": "fab fa-react" },
+            { "name": "Redux", "level": 88, "icon": "fab fa-react" },
+            { "name": "Angular", "level": 85, "icon": "fab fa-angular" },
+            { "name": "PrimeNG/PrimeReact", "level": 90, "icon": "fas fa-layer-group" },
+            { "name": "HTML5/CSS3", "level": 93, "icon": "fab fa-html5" },
+            { "name": "Thymeleaf", "level": 80, "icon": "fas fa-file-code" }
+          ]
+        },
+        {
+          "title": "Backend & Microservices",
+          "icon": "fas fa-server",
+          "skills": [
+            { "name": "Spring Boot", "level": 95, "icon": "fas fa-leaf" },
+            { "name": "Spring Data JPA", "level": 90, "icon": "fas fa-leaf" },
+            { "name": "JBoss Fuse", "level": 88, "icon": "fas fa-cogs" },
+            { "name": "Apache Camel", "level": 85, "icon": "fas fa-route" },
+            { "name": "REST APIs", "level": 92, "icon": "fas fa-exchange-alt" },
+            { "name": "Drools Rule Engine", "level": 82, "icon": "fas fa-brain" },
+            { "name": "Microservices Architecture", "level": 88, "icon": "fas fa-cubes" }
+          ]
+        },
+        {
+          "title": "Databases & Caching",
+          "icon": "fas fa-database",
+          "skills": [
+            { "name": "PostgreSQL", "level": 90, "icon": "fas fa-database" },
+            { "name": "MySQL", "level": 88, "icon": "fas fa-database" },
+            { "name": "Couchbase (NoSQL)", "level": 85, "icon": "fas fa-database" },
+            { "name": "Redis Caching", "level": 87, "icon": "fas fa-memory" }
+          ]
+        },
+        {
+          "title": "DevOps & Cloud Tools",
+          "icon": "fas fa-cloud",
+          "skills": [
+            { "name": "Docker", "level": 85, "icon": "fab fa-docker" },
+            { "name": "Kubernetes", "level": 80, "icon": "fas fa-dharmachakra" },
+            { "name": "Git", "level": 92, "icon": "fab fa-git-alt" },
+            { "name": "Jira", "level": 88, "icon": "fab fa-jira" }
+          ]
+        },
+        {
+          "title": "Code Quality & Security",
+          "icon": "fas fa-shield-alt",
+          "skills": [
+            { "name": "SonarQube", "level": 85, "icon": "fas fa-search" },
+            { "name": "Black Duck", "level": 80, "icon": "fas fa-shield-alt" },
+            { "name": "Checkmarx", "level": 80, "icon": "fas fa-lock" },
+            { "name": "Secure Coding Practices", "level": 88, "icon": "fas fa-user-shield" }
+          ]
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Oracle Certified Professional Java SE",
+          "issuer": "Oracle",
+          "year": "2023",
+          "icon": "fab fa-java"
+        },
+        {
+          "name": "AWS Certified Developer",
+          "issuer": "Amazon Web Services",
+          "year": "2023",
+          "icon": "fab fa-aws"
+        },
+        {
+          "name": "Spring Professional Certification",
+          "issuer": "VMware",
+          "year": "2022",
+          "icon": "fas fa-leaf"
+        }
+      ],
+      "tools": [
+        { "name": "IntelliJ IDEA", "icon": "fas fa-code" },
+        { "name": "VS Code", "icon": "fas fa-code" },
+        { "name": "Eclipse", "icon": "fas fa-code" },
+        { "name": "Postman", "icon": "fas fa-paper-plane" },
+        { "name": "Jenkins", "icon": "fa-brands fa-jenkins" },
+        { "name": "Swagger", "icon": "fas fa-file-alt" },
+        { "name": "Maven", "icon": "fas fa-box" },
+        { "name": "Jira Board", "icon": "fa-brands fa-atlassian" },
+        { "name": "Tabnine", "icon": "fa-brands fa-mailchimp" },
+        { "name": "ChatGPT", "icon": "fa-brands fa-studiovinari" },
+        { "name": "Stack Overflow", "icon": "fa-brands fa-stack-overflow" },
+        { "name": "Gitlab", "icon": "fa-brands fa-gitlab" },
+        { "name": "Sass", "icon": "fa-brands fa-sass" },
+        { "name": "Figma", "icon": "fa-brands fa-figma" }
+      ],
+      "expertiseHighlights": [
+        {
+          "icon": "fas fa-rocket",
+          "title": "Performance Optimization",
+          "description": "API performance optimization to execute under 1 second in production environments"
+        },
+        {
+          "icon": "fas fa-users",
+          "title": "Team Leadership",
+          "description": "Led frontend teams of 3-4 members, managing Jira tasks and streamlining workflows"
+        },
+        {
+          "icon": "fas fa-shield-alt",
+          "title": "Security & Compliance",
+          "description": "Ensuring code security with clean SonarQube, Black Duck, and Checkmarx reports"
+        },
+        {
+          "icon": "fas fa-cogs",
+          "title": "System Integration",
+          "description": "Expertise in Java design patterns and integration patterns for scalable systems"
+        }
+      ],
+      "stats": [
+        {
+          "number": "15+",
+          "label": "Technologies Mastered"
+        },
+        {
+          "number": "4.3",
+          "label": "Years Experience"
+        },
+        {
+          "number": "50+",
+          "label": "APIs Developed"
+        },
+        {
+          "number": "3",
+          "label": "Major Projects"
+        }
+      ]
+    }
+  }
+}
+
+============================================
+INSTRUCTIONS FOR FIREBASE:
+============================================
+
+1. Go to your Firebase Console
+2. Navigate to Firestore Database
+3. Find your collection "users"
+4. Find your document with ID: rDxUQY3fwmUzA6oi3VCEWXfJDo83
+5. Click on the document
+6. Click "Edit document" or the pencil icon
+7. Replace the entire content with the JSON structure above
+8. Make sure to maintain the exact structure and nesting
+9. Save the document
+
+IMPORTANT NOTES:
+- Keep your existing userId, email, displayName, phoneNumber, createdAt, updatedAt
+- The portfolioData section contains all your portfolio sections
+- All your JSON file data has been consolidated into this structure
+- This will make your portfolio show your custom data instead of the default JSON files
+- The data source indicator will show "Your Custom Data" when this is loaded
+
+After updating Firebase, your portfolio will display your personalized content with the green "Your Custom Data" indicator!
